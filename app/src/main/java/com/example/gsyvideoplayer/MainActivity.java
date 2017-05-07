@@ -1,5 +1,6 @@
 package com.example.gsyvideoplayer;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.open_btn, R.id.list_btn, R.id.list_btn_2, R.id.list_detail, R.id.clear_cache, R.id.recycler_2, R.id.list_detail_list, R.id.web_detail})
+    @OnClick({R.id.open_btn, R.id.list_btn, R.id.list_btn_2, R.id.list_detail, R.id.clear_cache, R.id.recycler, R.id.recycler_2, R.id.list_detail_list, R.id.web_detail, R.id.danmaku_video, R.id.fragment_video})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.open_btn:
@@ -40,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.list_btn_2:
                 //支持全屏重力旋转的列表播放，滑动后不会被销毁
                 JumpUtils.goToVideoPlayer2(this);
+                break;
+            case R.id.recycler:
+                //recycler的demo
+                JumpUtils.goToVideoRecyclerPlayer(this);
                 break;
             case R.id.recycler_2:
                 //recycler的demo
@@ -57,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 //播放一个连续列表
                 JumpUtils.gotoWebDetail(this);
                 break;
+            case R.id.danmaku_video:
+                //播放一个弹幕视频
+                JumpUtils.gotoDanmaku(this);
+            case R.id.fragment_video:
+                //播放一个弹幕视频
+                JumpUtils.gotoFragment(this);
             case R.id.clear_cache:
                 //清理缓存
                 GSYVideoManager.clearAllDefaultCache(MainActivity.this);

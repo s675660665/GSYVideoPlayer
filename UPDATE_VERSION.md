@@ -1,5 +1,158 @@
 ## 下方个版本说明，可以当做简单的wiki使用~，效果可参考DEMO。
 
+
+### 1.6.5(2017-05-05)
+* 增加镜像旋转demo SampleVideo
+* 修改了循环播放的UI问题
+* 修改了本地文件或者已缓存文件，显示进度问题 
+* 修复了横竖屏的问题
+* GSYVideoType增加SCREEN_TYPE_FULL类型，通过按照比例裁减放大视频，达到全屏
+* 增加setShowPauseCover接口
+
+```
+/**
+ * 是否需要加载显示暂停的cover图片
+ * 打开状态下，暂停退到后台，再回到前台不会显示黑屏，但可以对某些机型有概率出现OOM
+ * 关闭情况下，暂停退到后台，再回到前台显示黑屏
+ *
+ * @param showPauseCover 默认true
+ */
+public void setShowPauseCover(boolean showPauseCover)
+```
+
+### 1.6.4(2017-04-20)
+* update ijk to 0.7.9 (增加了soundTouch，调速后声音变调问题得到解决)
+* 修复了可能出现的判空问题，修复了ListGSYVideoPlayer的同步问题 
+* 修复了可移动小窗口播放结束无法移动的问题
+
+### 1.6.3(2017-04-15)
+* 修改了播放器全屏时的选择90度问题
+* 修改了播放器可能存在的拉伸问题
+* 增加旋转播放画面的demo和库支持
+
+### 1.6.2(2017-04-05)
+* 移除无用代码
+* 修复了动态播放按键的显示小白点问题
+* 增加了 NormalGSYVideoPlayer（使用正常图片做播放按键、系统loading的播放器）
+* 增加了动态加载so的方法
+* 增加了setIsTouchWigetFull方法，全屏的时候也可以禁止滑动产生的快进，声音，亮度调节逻辑
+```
+/**
+ * 设置自定义so包加载类
+ * 需要在instance之前设置
+ */
+public static void setIjkLibLoader(IjkLibLoader libLoader)
+```
+```
+/**
+ * 是否可以全屏滑动界面改变进度，声音等
+ * 默认 true
+ */
+public void setIsTouchWigetFull(boolean isTouchWigetFull)
+```
+### 1.6.1(2017-03-23)
+* setSpeed接口修改为支持播放中设置
+* 内存优化
+* update ijk to 0.7.8.1
+* 增加超时接口 GSYVideoManager
+```
+/**
+ * 是否需要在buffer缓冲时，增加外部超时判断，目前对于刚开始超时还没效果
+ *
+ * 超时后会走onError接口，播放器通过onPlayError回调出
+ *
+ * 错误码为 ： BUFFER_TIME_OUT_ERROR = -192
+ *
+ * 由于onError之后执行GSYVideoPlayer的OnError，如果不想触发错误，
+ * 可以重载onError，在super之前拦截处理。
+ *
+ * public void onError(int what, int extra){
+ *     do you want before super and return;
+ *     super.onError(what, extra)
+ * }
+ *
+ * @param timeOut          超时时间，毫秒 默认8000
+ * @param needTimeOutOther 是否需要延时设置，默认关闭
+ */
+public void setTimeOut(int timeOut, boolean needTimeOutOther) {
+    this.timeOut = timeOut;
+    this.needTimeOutOther = needTimeOutOther;
+}
+
+```
+
+### 1.6.0 (2017-02-19)
+* update ijkplayer to 0.7.7.1。
+* 增加了弹幕demo，主要演示如何快速集成弹幕功能。
+* 修改了播放时可能出现loading不消失问题。
+* 修复了全屏和退出全屏图片显示错误问题。
+* 全屏切换按键的图片资源支持自定义。
+
+```
+/**
+ * 设置右下角 显示切换到全屏 的按键资源
+ * 必须在setUp之前设置
+ * 不设置使用默认
+ */
+public void setEnlargeImageRes(int mEnlargeImageRes)
+
+
+/**
+ * 设置右下角 显示退出全屏 的按键资源
+ * 必须在setUp之前设置
+ * 不设置使用默认
+ */
+public void setShrinkImageRes(int mShrinkImageRes)
+
+```
+
+
+### 1.5.9
+* update ijkplayer to 0.7.7
+* update build.gradle to 2.2.3
+
+### 1.5.8
+* 修改了锁定屏幕触摸功能再播放结束后的问题。
+
+### 1.5.7
+* change AudioManger get。
+
+### 1.5.6
+* 修复了mUrl再error后为空的问题。
+* 增加了GSYVideoManager的option配置接口。
+
+```
+/**
+ * 设置IJK视频的option
+ */
+public void setOptionModelList(List<VideoOptionModel> optionModelList)
+```
+
+### 1.5.5
+* update ijk 0.7.6。
+* 快播与慢播接口支持M以下。
+
+
+### 1.5.4
+* 增加了静音播放接口。
+
+GSYVideoManager下
+可参考：ListNormalAdapter
+```
+/**
+ * 是否需要静音
+ */
+public void setNeedMute(boolean needMute)
+```
+
+### 1.5.3
+* 修改了在缓冲的时候，默认loading点击会重置的问题。
+* 虚拟按键在弹出的后，过一段时间自动隐藏。
+
+## 1.5.2
+* 增加了Error的回调接口。
+* 修复了Demo的PlayActivity兼容问题
+
 ### 1.5.1
 * 全屏滑动弹出虚拟按键会影响进度问题。
 * 优化了滑动的弹出dialog。

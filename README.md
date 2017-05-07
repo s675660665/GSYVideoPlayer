@@ -14,20 +14,36 @@
 * **列表的小窗口播放，可拖动。**
 * **网络视频加载速度。**
 * **锁定/解锁全屏点击功能。**
-* **6.0以上支持快播和慢播。**
+* **支持快播和慢播。**
 * **调整显示比例:默认、16:9、4:3。**
+* **暂停时前后台切换不黑屏**
 * **调整不同清晰度的支持。**
 * **支持IJKPlayer和EXOPlayer切换。**
 * **进度条小窗口预览（测试）。**
 * **Https支持。**
+* **支持播放时旋转画面角度（0,90,180,270）。**
 * **连续播放一个列表的视频。**
 * **支持全屏与非全屏两套布局切换**
+* **弹幕支持**
+* **镜像旋转**
 
 [![](https://jitpack.io/v/CarGuo/GSYVideoPlayer.svg)](https://jitpack.io/#CarGuo/GSYVideoPlayer)
+[ ![Download](https://api.bintray.com/packages/carguo/GSYVideoPlayer/gsyVideoPlayer/images/download.svg) ](https://bintray.com/carguo/GSYVideoPlayer/gsyVideoPlayer/_latestVersion)
 [![Build Status](https://travis-ci.org/CarGuo/GSYVideoPlayer.svg?branch=master)](https://travis-ci.org/CarGuo/GSYVideoPlayer)
 
-## 使用依赖
+## 使用依赖(支持jcenter和jitpack)
 
+### 1、JCenter 引入方法
+
+#### 直接在module下的build.gradle添加
+```
+compile 'com.shuyu:GSYVideoPlayer:1.6.5'
+
+```
+
+--------------------------------------------------------------------------------
+
+### 2、JitPack引入方法
 #### 在project下的build.gradle添加
 ```
 allprojects {
@@ -42,11 +58,17 @@ allprojects {
 
 ```
 dependencies {
-        compile 'com.github.CarGuo:GSYVideoPlayer:v1.5.1'
+        compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.5'
 }
 ```
 
-### QQ群，有兴趣的可以进来，无底线欢迎：174815284 。
+--------------------------------------------------------------------------------
+
+* ### 下方文档以及问题集锦，你想要知道的大部分都在里面。
+
+* ### ！！有问题请先下面问题集锦中查阅（如依赖不成功，播放不成功等等）！！
+
+* ### QQ群，有兴趣的可以进来，无底线欢迎：174815284 。
 
 --------------------------------------------------------------------------------
 
@@ -65,12 +87,6 @@ dependencies {
 　
 ## 运行效果
 
-<img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/01.jpg" width="218px" height="120px"/>
-<img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/02.jpg" width="120px" height="218px"/>
-<img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/03.jpg" width="120px" height="218px"/>
-<img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/04.jpg" width="120px" height="218px"/>
-　
-
 * ### 1、打开一个播放
 <img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/01.gif" width="240px" height="426px"/>
 
@@ -79,21 +95,39 @@ dependencies {
 <img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/05.gif" width="240px" height="426px"/>
 <img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/04.gif" width="240px" height="426px"/>
 
-* ### 3、进度条小窗口预览
+* ### 3、弹幕
+<img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/09.gif" width="360px" height="240px"/>
+
+
+* ### 4、进度条小窗口预览
 <img src="https://github.com/CarGuo/GSYVideoPlayer/blob/master/07.gif" width="426px" height="240px"/>
+
 
 ## 近期版本
 
-### 1.5.1
-* 全屏滑动弹出虚拟按键会影响进度问题。
-* 优化了滑动的弹出dialog。
-* 修改了一些问题。
+### 1.6.5(2017-05-05)
+* 增加镜像旋转demo SampleVideo
+* 修改了循环播放的UI问题
+* 修改了本地文件或者已缓存文件，显示进度问题 
+* 修复了横竖屏的问题
+* GSYVideoType增加SCREEN_TYPE_FULL类型，通过按照比例裁减放大视频，达到全屏
+* 增加setShowPauseCover接口
 
-### 1.5.0
-* 增加了全屏和普通播放下使用两套布局的支持，增加demo：LandLayoutVideo。
-* 修改了DEMO的recyclerView的一个问题。
-* 修改了一些bug。
-* 增加了WebView滑动demo。
+```
+/**
+ * 是否需要加载显示暂停的cover图片
+ * 打开状态下，暂停退到后台，再回到前台不会显示黑屏，但可以对某些机型有概率出现OOM
+ * 关闭情况下，暂停退到后台，再回到前台显示黑屏
+ *
+ * @param showPauseCover 默认true
+ */
+public void setShowPauseCover(boolean showPauseCover)
+```
+
+### 1.6.4(2017-04-20)
+* update ijk to 0.7.9 (增加了soundTouch，调速后声音变调问题得到解决)
+* 修复了可能出现的判空问题，修复了ListGSYVideoPlayer的同步问题 
+* 修复了可移动小窗口播放结束无法移动的问题
 
 ### 更多版本请查阅：[版本更新说明](https://github.com/CarGuo/GSYVideoPlayer/blob/master/UPDATE_VERSION.md)
 
@@ -104,4 +138,10 @@ dependencies {
 -dontwarn tv.danmaku.ijk.**
 -keep class com.shuyu.gsyvideoplayer.** { *; }
 -dontwarn com.shuyu.gsyvideoplayer.**
+```
+
+## License
+
+```
+请参看IJKPlayer和AndroidVideoCache相关协议。
 ```
