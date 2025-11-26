@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
+
     <com.example.gsyvideoplayer.video.SampleVideo
         android:id="@+id/video_player"
         android:layout_width="match_parent"

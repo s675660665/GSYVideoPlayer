@@ -12,14 +12,6 @@
 
     </RelativeLayout>
 
-    <com.shuyu.gsyvideoplayer.GSYImageCover
-        android:id="@+id/cover"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:scaleType="fitXY" />
-
-
     <master.flame.danmaku.ui.widget.DanmakuView
         android:id="@+id/danmaku_view"
         android:layout_width="match_parent"
@@ -29,12 +21,12 @@
         android:id="@+id/thumb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:background="#000000"
         android:scaleType="fitCenter" />
 
@@ -72,8 +64,8 @@
                 android:max="100"
                 android:maxHeight="4dp"
                 android:minHeight="4dp"
-                android:paddingBottom="8dp"
                 android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 android:progressDrawable="@drawable/video_seek_progress"
                 android:thumb="@drawable/video_seek_thumb" />
 
